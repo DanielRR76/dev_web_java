@@ -14,7 +14,7 @@
             <jsp:include page="../comum/menu.jsp" />
             <div class="col-sm-6 offset-3 mt-5">
 
-                <h3>Cadastro</h3>
+                <h3>Cadastre um aluno</h3>
 
                 <%
                     String msgError = (String) request.getAttribute("msgError");
@@ -26,15 +26,35 @@
                 <form action="RegistrarController" method="POST">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome</label>
-                        <input type="text" name="nome" class="form-control" placeholder="Seu nome">
+                        <input type="text" name="nome" class="form-control" placeholder="Digite o nome">
                     </div>
                     <div class="mb-3">
-                        <label for="endereco" class="form-label">Endereço</label>
-                        <input type="text" name="endereco" class="form-control" placeholder="Seu endereço">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Digite o email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="celular" class="form-label">Celular</label>
+                        <input type="text" name="celular" class="form-control" placeholder="(99)99999-9999">
                     </div>
                     <div class="mb-3">
                         <label for="cpf" class="form-label">CPF</label>
                         <input type="text" name="cpf" class="form-control" placeholder="999.999.999-99">
+                    </div>
+                    <div class="mb-3">
+                        <label for="endereco" class="form-label">Endereço</label>
+                        <input type="text" name="endereco" class="form-control" placeholder="Digite o endereço">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cidade" class="form-label">Cidade</label>
+                        <input type="text" name="cidade" class="form-control" placeholder="Digite a cidade">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bairro" class="form-label">Bairro</label>
+                        <input type="text" name="bairro" class="form-control" placeholder="Digite o bairro">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cep" class="form-label">CEP</label>
+                        <input type="text" name="cep" class="form-control" placeholder="99999-999">
                     </div>
                     <div class="mb-3">
                         <label for="senha" class="form-label">Senha</label>
