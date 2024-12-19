@@ -19,7 +19,7 @@ public class AutenticaAdmController extends HttpServlet {
             throws ServletException, IOException {
 
         RequestDispatcher rd;
-        rd = request.getRequestDispatcher("/views/autenticacao/formLogin.jsp");
+        rd = request.getRequestDispatcher("/views/autenticacao/formLoginAdm.jsp");
         rd.forward(request, response);
 
     }
@@ -35,7 +35,7 @@ public class AutenticaAdmController extends HttpServlet {
         if (cpf_user.isEmpty() || senha_user.isEmpty()) {
             // dados não foram preenchidos retorna ao formulário
             request.setAttribute("msgError", "Usuário e/ou senha incorreto");
-            rd = request.getRequestDispatcher("/views/autenticacao/formLogin.jsp");
+            rd = request.getRequestDispatcher("/views/autenticacao/formLoginAdm.jsp");
             rd.forward(request, response);
 
         } else {
@@ -44,12 +44,20 @@ public class AutenticaAdmController extends HttpServlet {
             AdministradorDAO AdministradorDAO = new AdministradorDAO();
             try {
                 administradorObtido = AdministradorDAO.Logar(administrador);
+                if(administradorObtido.getAprovado().equals("n")) {
+                    request.setAttribute("msgError", "Usuário ainda nao foi aprovado");
+                    rd = request.getRequestDispatcher("/views/autenticacao/formLoginAdm.jsp");
+                    rd.forward(request, response);
+                }
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
                 throw new RuntimeException("Falha na query para Logar");
             }
-
-            if (administradorObtido.getId() != 0) {
+            if(administradorObtido.getAprovado().equals("n")) {
+                request.setAttribute("msgError", "Usuário ainda não foi aprovado");
+                rd = request.getRequestDispatcher("/views/autenticacao/formLoginAdm.jsp");
+                rd.forward(request, response);
+            } else if (administradorObtido.getId() != 0) {
                 HttpSession session = request.getSession();
                 session.setAttribute("administrador", administradorObtido);
 
@@ -58,7 +66,7 @@ public class AutenticaAdmController extends HttpServlet {
 
             } else {
                 request.setAttribute("msgError", "Usuário e/ou senha incorreto");
-                rd = request.getRequestDispatcher("/views/autenticacao/formLogin.jsp");
+                rd = request.getRequestDispatcher("/views/autenticacao/formLoginAdm.jsp");
                 rd.forward(request, response);
 
             }

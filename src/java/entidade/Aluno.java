@@ -38,6 +38,18 @@ public class Aluno {
         this.bairro = bairro;
         this.cep = cep;
     }
+    public Aluno (String nome, String email, String celular, String cpf, String senha, String endereco,
+    String cidade, String bairro, String cep) {
+        this.nome = nome;
+        this.email = email;
+        this.celular = celular;
+        this.cpf = cpf;
+        this.senha = senha;
+        this.endereco = endereco;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.cep = cep;
+    }
 
     public Aluno(String cpf, String senha) {
         this.cpf = cpf;

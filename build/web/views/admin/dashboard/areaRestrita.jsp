@@ -7,15 +7,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="#">
-        <title>Área Restrita</title>
+        <title>Adm</title>
         <link href="http://localhost:8080/aplicacaoMVC/views/bootstrap/bootstrap.min.css"  rel="stylesheet">
     </head>
     <body>
         <div class="container">
-            <jsp:include page="../../comum/menu.jsp" />
+            <jsp:include page="../../comum/menuAdm.jsp" />
             <div class="mt-5">
 
-                <h1>Área Restrita</h1>
+                <h1>Bem vindo, Adm!</h1>
                 <%
                     Administrador administradorLogado = (Administrador) session.getAttribute("administrador");
                     out.println("<h3>Usuário logado com sucesso</h3>");

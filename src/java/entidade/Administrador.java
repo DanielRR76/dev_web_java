@@ -14,6 +14,14 @@ public class Administrador {
         this.cpf = cpf;
         this.endereco = endereco;
         this.senha = senha;
+        this.aprovado = aprovado;
+    }
+    public Administrador(String nome, String cpf, String senha, String endereco) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.endereco = endereco;
+        this.senha = senha;
+        this.aprovado = "n";
     }
 
     public Administrador(String cpf, String senha) {

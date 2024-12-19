@@ -14,7 +14,7 @@ public class DisciplinaDAO implements Dao<Disciplina> {
         Conexao conexao = new Conexao();
         Disciplina disciplina = new Disciplina();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM disciplina WHERE id = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Disciplina WHERE id = ? ");
             sql.setInt(1, id);
             ResultSet resultado = sql.executeQuery();
 
@@ -35,12 +35,37 @@ public class DisciplinaDAO implements Dao<Disciplina> {
         return disciplina;
     }
 
+    public Disciplina getByNome(String cpf) throws Exception {
+        Conexao conexao = new Conexao();
+        try {
+            Disciplina disciplina = new Disciplina();
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Disciplina WHERE NOME = ? LIMIT 1 ");
+            sql.setString(1, cpf);
+            ResultSet resultado = sql.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    disciplina.setId(Integer.parseInt(resultado.getString("ID")));
+                    disciplina.setNome(resultado.getString("NOME"));
+                    disciplina.setRequisito(resultado.getString("REQUISITO"));
+                    disciplina.setEmenta(resultado.getString("EMENTA"));
+                    disciplina.setCargaHoraria(Integer.parseInt(resultado.getString("CARGA_HORARIA")));
+                }
+            }
+            return disciplina;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Query de select (get) incorreta");
+        } finally {
+            conexao.closeConexao();
+        }
+    }
+
     @Override
     public ArrayList<Disciplina> getAll() {
         ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM disciplina";
+            String selectSQL = "SELECT * FROM Disciplina";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
@@ -67,7 +92,7 @@ public class DisciplinaDAO implements Dao<Disciplina> {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement(
-                    "INSERT INTO disciplina (nome, requisito, ementa, carga_horaria)"
+                    "INSERT INTO Disciplina (nome, requisito, ementa, carga_horaria)"
                             + " VALUES (?,?,?,?)");
             sql.setString(1, Disciplina.getNome());
             sql.setString(2, Disciplina.getRequisito());
@@ -88,7 +113,7 @@ public class DisciplinaDAO implements Dao<Disciplina> {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement(
-                    "UPDATE disciplina SET nome = ?, requisito = ?, ementa = ?, carga_horaria = ?  WHERE id = ? ");
+                    "UPDATE Disciplina SET nome = ?, requisito = ?, ementa = ?, carga_horaria = ?  WHERE id = ? ");
             sql.setString(1, Disciplina.getNome());
             sql.setString(2, Disciplina.getRequisito());
             sql.setString(3, Disciplina.getEmenta());
@@ -108,7 +133,7 @@ public class DisciplinaDAO implements Dao<Disciplina> {
     public void delete(int id) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM disciplina WHERE id = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM Disciplina WHERE id = ? ");
             sql.setInt(1, id);
             sql.executeUpdate();
 

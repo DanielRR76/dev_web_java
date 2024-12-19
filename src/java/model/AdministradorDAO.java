@@ -26,7 +26,7 @@ public class AdministradorDAO {
         try {
             PreparedStatement sql = conexao.getConexao()
                     .prepareStatement("INSERT INTO Administrador (nome, cpf, senha, endereco, aprovado) "
-                            + " VALUES (?,?,?,?)");
+                            + " VALUES (?,?,?,?,?)");
             sql.setString(1, Administrador.getNome());
             sql.setString(2, Administrador.getCpf());
             sql.setString(3, Administrador.getSenha());
@@ -35,7 +35,7 @@ public class AdministradorDAO {
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new RuntimeException("Erro ao inserir Administrador", e);
         } finally {
             conexao.closeConexao();
         }
@@ -47,6 +47,32 @@ public class AdministradorDAO {
             Administrador Administrador = new Administrador();
             PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Administrador WHERE ID = ? ");
             sql.setInt(1, id);
+            ResultSet resultado = sql.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    Administrador.setId(Integer.parseInt(resultado.getString("ID")));
+                    Administrador.setNome(resultado.getString("NOME"));
+                    Administrador.setCpf(resultado.getString("CPF"));
+                    Administrador.setSenha(resultado.getString("SENHA"));
+                    Administrador.setEndereco(resultado.getString("ENDERECO"));
+                    Administrador.setAprovado(resultado.getString("APROVADO"));
+                }
+            }
+            return Administrador;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Query de select (get) incorreta");
+        } finally {
+            conexao.closeConexao();
+        }
+    }
+
+    public Administrador getAdministradorByCPF(String cpf) throws Exception {
+        Conexao conexao = new Conexao();
+        try {
+            Administrador Administrador = new Administrador();
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Administrador WHERE CPF = ? LIMIT 1 ");
+            sql.setString(1, cpf);
             ResultSet resultado = sql.executeQuery();
             if (resultado != null) {
                 while (resultado.next()) {

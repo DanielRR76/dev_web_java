@@ -14,7 +14,7 @@ public class ProfessorDAO implements Dao<Professor> {
         Conexao conexao = new Conexao();
         Professor professor = new Professor();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM professores WHERE id = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Professores WHERE id = ? ");
             sql.setInt(1, id);
             ResultSet resultado = sql.executeQuery();
 
@@ -34,22 +34,44 @@ public class ProfessorDAO implements Dao<Professor> {
         }
         return professor;
     }
+    public Professor getByCPF(String cpf) throws Exception {
+        Conexao conexao = new Conexao();
+        try {
+            Professor professor = new Professor();
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Professores WHERE CPF = ? LIMIT 1 ");
+            sql.setString(1, cpf);
+            ResultSet resultado = sql.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    professor.setId(Integer.parseInt(resultado.getString("ID")));
+                    professor.setNome(resultado.getString("NOME"));
+                    professor.setEmail(resultado.getString("EMAIL"));
+                    professor.setCpf(resultado.getString("CPF"));
+                    professor.setSenha(resultado.getString("SENHA"));
+                }
+            }
+            return professor;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Query de select (get) incorreta");
+        } finally {
+            conexao.closeConexao();
+        }
+    }
 
     @Override
     public ArrayList<Professor> getAll() {
         ArrayList<Professor> professores = new ArrayList<Professor>();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM professores";
+            String selectSQL = "SELECT * FROM Professores";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
             if (resultado != null) {
                 while (resultado.next()) {
                     Professor Professor = new Professor(resultado.getInt("id"), resultado.getString("nome"),
-                            resultado.getString("email"),
-                            resultado.getString("cpf"),
-                            resultado.getString("senha"));
+                            resultado.getString("email"), resultado.getString("cpf"), resultado.getString("senha"));
                     professores.add(Professor);
                 }
             }
@@ -66,7 +88,7 @@ public class ProfessorDAO implements Dao<Professor> {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement(
-                    "INSERT INTO profesores (nome, email, cpf, senha)"
+                    "INSERT INTO Professores (nome, email, cpf, senha)"
                             + " VALUES (?,?,?,?)");
             sql.setString(1, Professor.getNome());
             sql.setString(2, Professor.getEmail());
@@ -87,7 +109,7 @@ public class ProfessorDAO implements Dao<Professor> {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement(
-                    "UPDATE professores SET nome = ?, email = ?, cpf = ?, senha = ?  WHERE ID = ? ");
+                    "UPDATE Professores SET nome = ?, email = ?, cpf = ?, senha = ?  WHERE ID = ? ");
             sql.setString(1, Professor.getNome());
             sql.setString(2, Professor.getEmail());
             sql.setString(3, Professor.getCpf());
@@ -107,7 +129,7 @@ public class ProfessorDAO implements Dao<Professor> {
     public void delete(int id) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM professores WHERE id = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM Professores WHERE id = ? ");
             sql.setInt(1, id);
             sql.executeUpdate();
 
@@ -122,7 +144,7 @@ public class ProfessorDAO implements Dao<Professor> {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao()
-                    .prepareStatement("SELECT * FROM profesores WHERE cpf=? and senha =? LIMIT 1");
+                .prepareStatement("SELECT * FROM Professores WHERE cpf=? and senha =? LIMIT 1");
             sql.setString(1, Professor.getCpf());
             sql.setString(2, Professor.getSenha());
             ResultSet resultado = sql.executeQuery();

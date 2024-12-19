@@ -14,12 +14,17 @@
                         Administrador AdministradorLogado = (Administrador) session.getAttribute("administrador");
                         if (AdministradorLogado != null) { %>
                             <a class="nav-link" href="/aplicacaoMVC/admin/dashboard">Dashboard</a>
-                            <a class="nav-link" href="/aplicacaoMVC/admin/CategoriaController?acao=Listar">Categorias</a>
+                            <a class="nav-link" href="/aplicacaoMVC/admin/cadastro">Cadastro</a>
+                            <!-- <a class="nav-link" href="/aplicacaoMVC/admin/registrarAdm">Cadastrar Administrador</a>
+                            <a class="nav-link" href="/aplicacaoMVC/admin/registrarProfessor">Cadastrar Professor</a>
+                            <a class="nav-link" href="/aplicacaoMVC/admin/registrarAluno">Cadastrar Aluno</a> -->
                             <a class="nav-link" href="/aplicacaoMVC/admin/logOut">Logout</a>
                 <%  } else { %>
                 
-                            <a class="nav-link" href="/aplicacaoMVC/MostrarComentarios">Coment&aacute;rios</a>
-                            <a class="nav-link" href="/aplicacaoMVC/AutenticaController?acao=Login">Login</a>
+                            <!-- <a class="nav-link" href="/aplicacaoMVC/MostrarComentarios">Coment&aacute;rios</a> -->
+                            <a class="nav-link" href="/aplicacaoMVC/AutenticaAdmController?acao=Login">Login como Administrador</a>
+                            <a class="nav-link" href="/aplicacaoMVC/AutenticaAlunoController?acao=Login">Login como Aluno</a>
+                            <a class="nav-link" href="/aplicacaoMVC/AutenticaProfessorController?acao=Login">Login como Professor</a>
                 <%    }
                     }%>
 
