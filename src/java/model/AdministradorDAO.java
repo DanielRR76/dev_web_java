@@ -93,6 +93,32 @@ public class AdministradorDAO {
         }
     }
 
+    public ArrayList<Administrador> getAllAdministradorNaoAprovado() {
+        Conexao conexao = new Conexao();
+        try {
+            ArrayList<Administrador> Administradores = new ArrayList<Administrador>();
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Administrador WHERE aprovado = 'n'");
+            ResultSet resultado = sql.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    Administrador Administrador = new Administrador(Integer.parseInt(resultado.getString("ID")),
+                            resultado.getString("NOME"),
+                            resultado.getString("CPF"),
+                            resultado.getString("SENHA"),
+                            resultado.getString("ENDERECO"),
+                            resultado.getString("APROVADO"));
+                    Administradores.add(Administrador);
+                }
+            }
+            return Administradores;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Query de select (get) incorreta");
+        } finally {
+            conexao.closeConexao();
+        }
+    }
+
     public void Alterar(Administrador Administrador) throws Exception {
         Conexao conexao = new Conexao();
         try {

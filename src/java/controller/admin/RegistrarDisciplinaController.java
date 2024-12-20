@@ -35,7 +35,8 @@ public class RegistrarDisciplinaController extends HttpServlet {
         nome_disciplina = nome_disciplina.toUpperCase();
         String requisito_disciplina = request.getParameter("requisito");
         String ementa_disciplina = request.getParameter("ementa");
-        int carga_horaria = Integer.parseInt(request.getParameter("cargaHoraria"));
+        String carga_horaria = request.getParameter("cargaHoraria");
+        int carga_horaria_int;
         if (nome_disciplina.isEmpty()) {
             // dados não foram preenchidos retorna ao formulário
             request.setAttribute("msgError", "O nome da disciplina é obrigatorio");
@@ -43,7 +44,13 @@ public class RegistrarDisciplinaController extends HttpServlet {
             rd.forward(request, response);
 
         } else {
-            Disciplina disciplina = new Disciplina(nome_disciplina, requisito_disciplina, ementa_disciplina, carga_horaria);
+            if(carga_horaria.isEmpty()) {
+                carga_horaria_int = 0;
+            }
+            else {
+                carga_horaria_int = Integer.parseInt(carga_horaria);
+            }
+            Disciplina disciplina = new Disciplina(nome_disciplina, requisito_disciplina, ementa_disciplina, carga_horaria_int);
             DisciplinaDAO DisciplinaDAO = new DisciplinaDAO();
             try {
                 Disciplina disciplina2 = DisciplinaDAO.getByNome(nome_disciplina);

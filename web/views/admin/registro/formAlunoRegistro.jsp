@@ -34,19 +34,19 @@
                     <form action="/aplicacaoMVC/admin/registrarAluno" method="POST">
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" name="nome" class="form-control" placeholder="Digite o nome" maxlength="50">
+                            <input type="text" name="nome" class="form-control" placeholder="Digite o nome" maxlength="50" required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Digite o email" maxlength="50">
+                            <input type="email" name="email" class="form-control" placeholder="Digite o email" maxlength="50" required>
                         </div>
                         <div class="mb-3">
                             <label for="celular" class="form-label">Celular</label>
-                            <input type="text" name="celular" class="form-control" placeholder="(99)99999-9999" maxlength="14">
+                            <input type="text" name="celular" class="form-control" placeholder="(99)99999-9999" maxlength="14" required>
                         </div>
                         <div class="mb-3">
                             <label for="cpf" class="form-label">CPF</label>
-                            <input type="text" name="cpf" class="form-control" placeholder="999.999.999-99" maxlength="14">
+                            <input type="text" name="cpf" class="form-control" placeholder="999.999.999-99" maxlength="14" required>
                         </div>
                         <div class="mb-3">
                             <label for="endereco" class="form-label">Endereço</label>
@@ -66,11 +66,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="senha" class="form-label">Senha</label>
-                            <input type="password" name="senha"  class="form-control" maxlength="255">
+                            <input type="password" name="senha"  class="form-control" maxlength="255" required>
                         </div>
                         <div class="mb-3">
                             <label for="senha2" class="form-label">Redigite a senha</label>
-                            <input type="password" name="senha2"  class="form-control" maxlength="255">
+                            <input type="password" name="senha2"  class="form-control" maxlength="255" required>
                         </div>
                         <div class="d-flex justify-content-between">
                             <a href="/aplicacaoMVC/admin/cadastro" class="btn btn-secondary">Voltar</a>

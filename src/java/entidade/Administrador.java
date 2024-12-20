@@ -9,6 +9,15 @@ public class Administrador {
     private String senha;
     private String aprovado;
 
+    public Administrador(int id, String nome, String cpf, String senha, String endereco, String aprovado) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.endereco = endereco;
+        this.senha = senha;
+        this.aprovado = aprovado;
+    }
+
     public Administrador(String nome, String cpf, String senha, String endereco, String aprovado) {
         this.nome = nome;
         this.cpf = cpf;

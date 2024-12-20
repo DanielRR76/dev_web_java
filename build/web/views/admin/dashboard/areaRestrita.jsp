@@ -25,7 +25,7 @@
             <div class="mt-5 table-responsive">
                 <h4 class="mb-5 text-center">Informações das turmas</h4>
                 <table class="table table-striped table-dark table-bordered table-hover">
-                  <caption>As notas estão zeradas porque as turmas acabaram de ser criadas. A função de lançar as notas é dos professores</caption>
+                  <caption>As notas não estão sendo exibidas porque as turmas acabaram de ser criadas. A função de lançar as notas é dos professores</caption>
                     <thead>
                       <tr>
                         <th scope="col">Aluno</th>
@@ -44,7 +44,8 @@
                             out.println("<td>" + turma.getAluno().getNome() + "</td>");
                             out.println("<td>" + turma.getProfessor().getNome() + "</td>");
                             out.println("<td>" + turma.getDisciplina().getNome() + "</td>");
-                            out.println("<td>" + turma.getTurma().getNota() + "</td>");
+                            String notaExibida = (turma.getTurma().getNota() == -1) ? "-" : String.valueOf(turma.getTurma().getNota());
+                            out.println("<td>" + notaExibida + "</td>");
                             out.println("<td>" + turma.getTurma().getCodigoTurma() + "</td>");
                             out.println("</tr>");
                           }

@@ -45,7 +45,7 @@ public class TurmaDAO implements Dao<Turma> {
         Conexao conexao = new Conexao();
         try {
             Turma turma = new Turma();
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Turmas WHERE professor_id = ? and aluno_id = ? and disciplina_id = ? LIMIT 1 ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Turmas WHERE professor_id = ? and aluno_id = ? and disciplina_id = ?");
             sql.setInt(1, idProfessor);
             sql.setInt(2, idAluno);
             sql.setInt(3, idDisciplina);
@@ -61,6 +61,57 @@ public class TurmaDAO implements Dao<Turma> {
                 }
             }
             return turma;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Query de select (get) incorreta");
+        } finally {
+            conexao.closeConexao();
+        }
+    }
+
+    public ArrayList<Turma> getMaxLecionamento(int idProfessor) throws Exception {
+        Conexao conexao = new Conexao();
+        try {
+            ArrayList<Turma> turmas = new ArrayList<Turma>();
+            String selectSQL = "WITH CTE AS (SELECT *,ROW_NUMBER() OVER (PARTITION BY professor_id, disciplina_id) AS rn "
+                    + "FROM turmas WHERE professor_id = ?) SELECT * FROM CTE WHERE rn = 1";
+            PreparedStatement sql = conexao.getConexao().prepareStatement(selectSQL);
+            sql.setInt(1, idProfessor);
+            ResultSet resultado = sql.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    Turma Turma = new Turma(resultado.getInt("id"), resultado.getInt("professor_id"),
+                            resultado.getInt("disciplina_id"), resultado.getInt("aluno_id"),
+                            resultado.getString("codigo_turma"), Double.parseDouble(resultado.getString("nota")));
+                    turmas.add(Turma);
+                }
+            }
+            return turmas;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            conexao.closeConexao();
+        }
+    }
+
+    public ArrayList<Turma> getMaxInscricao(int idProfessor, int idDisciplina) throws Exception {
+        Conexao conexao = new Conexao();
+        try {
+            ArrayList<Turma> turmas = new ArrayList<Turma>();
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Turmas WHERE professor_id = ? and disciplina_id = ?");
+            sql.setInt(1, idProfessor);
+            sql.setInt(2, idDisciplina);
+            ResultSet resultado = sql.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    Turma Turma = new Turma(resultado.getInt("id"), resultado.getInt("professor_id"),
+                            resultado.getInt("disciplina_id"), resultado.getInt("aluno_id"),
+                            resultado.getString("codigo_turma"), Double.parseDouble(resultado.getString("nota")));
+                    turmas.add(Turma);
+                }
+            }
+            return turmas;
 
         } catch (SQLException e) {
             throw new RuntimeException("Query de select (get) incorreta");

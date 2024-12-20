@@ -15,6 +15,9 @@
             <div class="col-sm-6 offset-3 mt-5">
 
                 <h3>Faça seu login professor!</h3>
+                <div class="alert alert-warning" role="alert">
+                    Ainda não foi implementado
+                </div>
 
                 <%
                     String msgError = (String) request.getAttribute("msgError");

@@ -84,18 +84,36 @@ public class RegistrarTurmaController extends HttpServlet {
             rd.forward(request, response);
 
         } else {
-            Turma turma = new Turma(idProfessor, idDisciplina, idAluno, codigoTurma, 0.0);
+            Turma turma = new Turma(idProfessor, idDisciplina, idAluno, codigoTurma, -1.0);
             TurmaDAO TurmaDAO = new TurmaDAO();
             try {
                 Turma turma2 = TurmaDAO.getByIds(idProfessor, idAluno, idDisciplina);
+                ArrayList<Turma> maxLecionamento = TurmaDAO.getMaxLecionamento(idProfessor);
+                ArrayList<Turma> maxIncricao = TurmaDAO.getMaxInscricao(idProfessor, idDisciplina);
                 if (turma2.getIdProfessor() != 0 && turma2.getIdAluno() != 0 && turma2.getIdDisciplina() != 0) {
                     request.setAttribute("disciplinas", disciplinas);
                     request.setAttribute("alunos", alunos);
                     request.setAttribute("professores", professores);
-                    request.setAttribute("msgError", "Turma ja cadastrada");
+                    request.setAttribute("msgError", "Turma já cadastrada");
                     rd = request.getRequestDispatcher("/views/admin/registro/formTurmaRegistro.jsp");
                     rd.forward(request, response);
                     
+                }
+                else if(maxIncricao.size() == 2) {
+                    request.setAttribute("disciplinas", disciplinas);
+                    request.setAttribute("alunos", alunos);
+                    request.setAttribute("professores", professores);
+                    request.setAttribute("msgError", "Não tem mais vagas disponíveis para essa turma");
+                    rd = request.getRequestDispatcher("/views/admin/registro/formTurmaRegistro.jsp");
+                    rd.forward(request, response);
+                }
+                else if (maxLecionamento.size() == 2) {
+                    request.setAttribute("disciplinas", disciplinas);
+                    request.setAttribute("alunos", alunos);
+                    request.setAttribute("professores", professores);
+                    request.setAttribute("msgError", "Professor já leciona duas turmas");
+                    rd = request.getRequestDispatcher("/views/admin/registro/formTurmaRegistro.jsp");
+                    rd.forward(request, response);
                 }
                 else {
                     TurmaDAO.insert(turma);

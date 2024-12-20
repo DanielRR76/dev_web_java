@@ -15,6 +15,9 @@
             <div class="col-sm-6 offset-3 mt-5">
 
                 <h3>Faça seu login aluno!</h3>
+                <div class="alert alert-warning" role="alert">
+                    Ainda não foi implementado
+                </div>
 
                 <%
                     String msgError = (String) request.getAttribute("msgError");
@@ -23,7 +26,7 @@
                     <%= msgError%>
                 </div>
                 <% }%>
-                <form action="/aplicacaoMVC/AutenticaController?acao=login" method="POST">
+                <form action="/aplicacaoMVC/AutenticaAlunoController?acao=login" method="POST">
                     <div class="mb-3">
                         <label for="cpf" class="form-label">CPF</label>
                         <input type="text" name="cpf" class="form-control">

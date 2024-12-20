@@ -16,6 +16,7 @@
                             <a class="nav-link" href="/aplicacaoMVC/admin/dashboard">Dashboard</a>
                             <!-- <a class="nav-link" href="/aplicacaoMVC/admin/CategoriaController?acao=Listar">Categorias</a> -->
                             <a class="nav-link" href="/aplicacaoMVC/admin/cadastro">Cadastro</a>
+                            <a class="nav-link" href="/aplicacaoMVC/admin/aprovaAdm">Aprovacao</a>
                             <!-- <a class="nav-link" href="/aplicacaoMVC/admin/registrarAdm">Cadastrar Administrador</a>
                             <a class="nav-link" href="/aplicacaoMVC/admin/registrarProfessor">Cadastrar Professor</a>
                             <a class="nav-link" href="/aplicacaoMVC/admin/registrarAluno">Cadastrar Aluno</a> -->

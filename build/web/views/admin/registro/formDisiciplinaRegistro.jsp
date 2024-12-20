@@ -34,7 +34,7 @@
                     <form action="/aplicacaoMVC/admin/registrarDisciplina" method="POST">
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" name="nome" class="form-control" placeholder="Digite o nome" maxlength="50">
+                            <input type="text" name="nome" class="form-control" placeholder="Digite o nome" maxlength="50" required>
                         </div>
                         <div class="mb-3">
                             <label for="requisito" class="form-label">Requisito</label>

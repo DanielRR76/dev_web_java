@@ -79,7 +79,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="codigoTurma" class="form-label">Digite o código da turma</label>
-                            <input type="text" name="codigoTurma" class="form-control" placeholder="Digite a carga horária" maxlength="2">
+                            <input type="text" name="codigoTurma" class="form-control" placeholder="Digite a carga horária" maxlength="2" required>
                         </div>
                         <div class="d-flex justify-content-between">
                             <a href="/aplicacaoMVC/admin/cadastro" class="btn btn-secondary">Voltar</a>
