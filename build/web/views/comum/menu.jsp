@@ -15,9 +15,6 @@
                         if (AdministradorLogado != null) { %>
                             <a class="nav-link" href="/aplicacaoMVC/admin/dashboard">Dashboard</a>
                             <a class="nav-link" href="/aplicacaoMVC/admin/cadastro">Cadastro</a>
-                            <!-- <a class="nav-link" href="/aplicacaoMVC/admin/registrarAdm">Cadastrar Administrador</a>
-                            <a class="nav-link" href="/aplicacaoMVC/admin/registrarProfessor">Cadastrar Professor</a>
-                            <a class="nav-link" href="/aplicacaoMVC/admin/registrarAluno">Cadastrar Aluno</a> -->
                             <a class="nav-link" href="/aplicacaoMVC/admin/logOut">Logout</a>
                 <%  } else { %>
                 

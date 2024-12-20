@@ -27,7 +27,9 @@ public class AutenticaAdmController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+                
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         RequestDispatcher rd;
         // pegando os parâmetros do request
         String cpf_user = request.getParameter("cpf");
@@ -61,8 +63,7 @@ public class AutenticaAdmController extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("administrador", administradorObtido);
 
-                rd = request.getRequestDispatcher("/admin/dashboard");
-                rd.forward(request, response);
+                response.sendRedirect("/aplicacaoMVC/admin/dashboard");
 
             } else {
                 request.setAttribute("msgError", "Usuário e/ou senha incorreto");

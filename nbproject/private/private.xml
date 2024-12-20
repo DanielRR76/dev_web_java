@@ -6,14 +6,14 @@
             <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/AutenticaAdmController.java</file>
             <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/web/views/comum/menu.jsp</file>
             <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/RegistrarAdmController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/filtro/filtroRestritoAdm.java</file>
             <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/RegistrarAlunoController.java</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/filtro/filtroRestrito.java</file>
             <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/entidade/Professor.java</file>
             <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/RegistrarTurmaController.java</file>
             <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/web/views/public/home.jsp</file>
             <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/RegistrarProfessorController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/DashboardController.java</file>
             <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/model/AdministradorDAO.java</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/AutenticaController.java</file>
             <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/model/ProfessorDAO.java</file>
         </group>
     </open-files>

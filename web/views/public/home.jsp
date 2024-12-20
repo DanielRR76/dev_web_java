@@ -16,13 +16,13 @@
     <div class="container">
       <jsp:include page="../comum/menu.jsp" />
       <div class="mt-5">
-        <h3>Seja Bem-vindo School</h3>
+        <h3>Seja Bem-vindo ao School</h3>
         <h4>Site onde:</h4>
         <h5>
           Os alunos conseguem se inscrever nas disciplinas e ver suas notas
         </h5>
         <h5>
-          Os professores conseguem ver os alunos e lançar as notas pra eles
+          Os professores conseguem ver os alunos e lançar as suas notas
         </h5>
         <h5>
           E onde os administradores conseguem criar novas disciplinas/turmas, cadastrar alunos e professores
