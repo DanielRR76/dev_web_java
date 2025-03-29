@@ -29,13 +29,13 @@ public class AutenticaAlunoController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         RequestDispatcher rd;
-        // pegando os parâmetros do request
         String cpf_user = request.getParameter("cpf");
         String senha_user = request.getParameter("senha");
         if (cpf_user.isEmpty() || senha_user.isEmpty()) {
-            // dados não foram preenchidos retorna ao formulário
-            request.setAttribute("msgError", "Usuário e/ou senha incorreto");
+            request.setAttribute("msgError", "Preencha todos os campos");
             rd = request.getRequestDispatcher("/views/autenticacao/formLoginAluno.jsp");
             rd.forward(request, response);
 
@@ -44,24 +44,27 @@ public class AutenticaAlunoController extends HttpServlet {
             Aluno aluno = new Aluno(cpf_user, senha_user);
             AlunoDAO AlunoDAO = new AlunoDAO();
             try {
-                alunoObtido = AlunoDAO.Logar(aluno);
+                alunoObtido = AlunoDAO.getByCPF(aluno.getCpf());
+                if (alunoObtido.getId() == 0) {
+                    request.setAttribute("msgError", "Usuário nao cadastrado");
+                    rd = request.getRequestDispatcher("/views/autenticacao/formLoginAluno.jsp");
+                    rd.forward(request, response);
+
+                }
+                else if(!alunoObtido.getSenha().equals(aluno.getSenha())) {
+                    request.setAttribute("msgError", "Senha incorreta");
+                    rd = request.getRequestDispatcher("/views/autenticacao/formLoginAluno.jsp");
+                    rd.forward(request, response);
+                }
+                else {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("aluno", alunoObtido);
+
+                    response.sendRedirect("/aplicacaoMVC/aluno/dashboard");
+                }
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
                 throw new RuntimeException("Falha na query para Logar");
-            }
-
-            if (alunoObtido.getId() != 0) {
-                HttpSession session = request.getSession();
-                session.setAttribute("aluno", alunoObtido);
-
-                rd = request.getRequestDispatcher("/admin/dashboard");
-                rd.forward(request, response);
-
-            } else {
-                request.setAttribute("msgError", "Usuário e/ou senha incorreto");
-                rd = request.getRequestDispatcher("/views/autenticacao/formLoginAluno.jsp");
-                rd.forward(request, response);
-
             }
         }
     }

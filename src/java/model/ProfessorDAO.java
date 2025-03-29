@@ -64,7 +64,7 @@ public class ProfessorDAO implements Dao<Professor> {
         ArrayList<Professor> professores = new ArrayList<Professor>();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM Professores";
+            String selectSQL = "SELECT * FROM Professores ORDER BY nome";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
@@ -140,7 +140,7 @@ public class ProfessorDAO implements Dao<Professor> {
         }
     }
 
-    public Professor Logar(Professor Professor) throws Exception {
+    public Professor Logar(Professor Professor) {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao()

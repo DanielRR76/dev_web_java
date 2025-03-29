@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="entidade.Professor, entidade.Aluno, entidade.Administrador"%>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -12,9 +12,23 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="d-flex h-100 text-center bg-dark text-light">
     <div class="container">
-      <jsp:include page="../comum/menu.jsp" />
+      <%
+          Professor professorLogado = (Professor) session.getAttribute("professor");
+          Aluno alunoLogado = (Aluno) session.getAttribute("aluno");
+          Administrador administradorLogado = (Administrador) session.getAttribute("administrador");
+      %>
+      <% if (professorLogado != null) { %>
+        <jsp:include page="../comum/menuProfessor.jsp" />
+      <% } else if (alunoLogado != null) { %>
+        <jsp:include page="../comum/menuAluno.jsp" />
+      <% } else if (administradorLogado != null) { %>
+        <jsp:include page="../comum/menuAdm.jsp" />
+      <% } else { %>
+        <jsp:include page="../comum/menu.jsp" />
+      <% } %>
+
       <div class="mt-5">
         <h3>Seja Bem-vindo ao School</h3>
         <h4>Site onde:</h4>

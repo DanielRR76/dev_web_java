@@ -9,11 +9,11 @@
     <title>School</title>
     <link href="http://localhost:8080/aplicacaoMVC/views/bootstrap/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex h-100 text-center bg-dark text-light">
     <div class="container">
         <jsp:include page="../../comum/menuAdm.jsp" />
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6 mt-5">
+            <div class="col-12 col-md-8 col-lg-6 mt-4">
                 <h3 class="text-center">Aprove um administrador</h3>
 
                 <% String msgError = (String) request.getAttribute("msgError");
@@ -34,7 +34,7 @@
                     <%
                         // Recuperando a lista de administradores
                         List<Administrador> administradores = (List<Administrador>) request.getAttribute("administradores");
-                
+
                         // Verifica se a lista é nula ou vazia
                         if (administradores == null || administradores.isEmpty()) {
                     %>
@@ -47,7 +47,8 @@
                     <%
                         } else {
                     %>
-                        <table class="table table-bordered table-striped mt-3">
+                    <div class="table-responsive-sm">
+                        <table class="table table-striped table-dark table-bordered table-hover mt-3">
                             <thead>
                                 <tr>
                                     <th>Nome</th>
@@ -64,7 +65,7 @@
                                         <td><%= admin.getNome() %></td>
                                         <td><%= admin.getCpf() %></td>
                                         <td>
-                                            <div class="form-check form-switch">
+                                            <div class="form-check form-switch d-flex justify-content-center">
                                                 <input class="form-check-input" type="checkbox" name="administradores" value="<%= admin.getId() %>" id="admin<%= admin.getId() %>">
                                             </div>
                                         </td>
@@ -74,8 +75,10 @@
                                 %>
                             </tbody>
                         </table>
+                    </div>
+
                         <div class="d-flex justify-content-between">
-                            <a href="/aplicacaoMVC/home" class="btn btn-secondary">Voltar</a>
+                            <a href="/aplicacaoMVC/admin/dashboard" class="btn btn-secondary">Voltar</a>
                             <input type="submit" value="Enviar" class="btn btn-primary">
                         </div>
                     <%

@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebFilter(filterName = "filtroRestritoProfessor", urlPatterns = {"/professor/*"})
-
 public class filtroRestritoProfessor implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,

@@ -41,7 +41,7 @@ public class AdministradorDAO {
         }
     }
 
-    public Administrador getAdministrador(int id) throws Exception {
+    public Administrador getAdministrador(int id){
         Conexao conexao = new Conexao();
         try {
             Administrador Administrador = new Administrador();
@@ -139,11 +139,11 @@ public class AdministradorDAO {
         }
     }
 
-    public void Excluir(Administrador Administrador) throws Exception {
+    public void Excluir(int  id) throws Exception {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM Administrador WHERE ID = ? ");
-            sql.setInt(1, Administrador.getId());
+            sql.setInt(1, id);
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -180,7 +180,7 @@ public class AdministradorDAO {
         return meusAdministradores;
     }
 
-    public Administrador Logar(Administrador Administrador) throws Exception {
+    public Administrador Logar(Administrador Administrador) {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao()

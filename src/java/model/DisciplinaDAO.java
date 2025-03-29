@@ -65,7 +65,7 @@ public class DisciplinaDAO implements Dao<Disciplina> {
         ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM Disciplina";
+            String selectSQL = "SELECT * FROM Disciplina ORDER BY nome";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();

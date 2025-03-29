@@ -41,7 +41,7 @@ public class TurmaDAO implements Dao<Turma> {
         }
     }
 
-    public Turma getByIds(int idProfessor, int idAluno, int idDisciplina) throws Exception {
+    public Turma getByIds(int idProfessor, int idAluno, int idDisciplina) {
         Conexao conexao = new Conexao();
         try {
             Turma turma = new Turma();
@@ -154,7 +154,7 @@ public class TurmaDAO implements Dao<Turma> {
                     + "d.id AS disciplinaId, d.nome AS disciplinaNome, d.requisito , d.ementa, d.carga_horaria,"
                     + "t.id AS turmaId ,t.codigo_turma , t.nota FROM turmas t INNER JOIN alunos a on t.aluno_id = a.id "
                     + "INNER JOIN professores p on t.professor_id = p.id INNER JOIN disciplina d on t.disciplina_id = d.id "
-                    + "ORDER BY alunoNome, profNome, disciplinaNome";
+                    + "ORDER BY t.codigo_turma, alunoNome, profNome, disciplinaNome";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
@@ -184,6 +184,50 @@ public class TurmaDAO implements Dao<Turma> {
             conexao.closeConexao();
         }
         return turmas;
+    }
+
+    public AlunoProfessorDisciplina getById(int id) {
+        AlunoProfessorDisciplina turmaResponse = new AlunoProfessorDisciplina();
+        Conexao conexao = new Conexao();
+        try {
+            String selectSQL = "SELECT a.id alunoId, a.nome AS alunoNome, a.email AS alunoEmail, a.celular AS alunoCelular,"
+                    + "a.cpf AS alunoCpf, a.senha AS alunoSenha, a.endereco AS alunoEnd, a.cidade, a.bairro , a.cep,"
+                    + "p.id AS profId, p.nome AS profNome, p.email as profEmail, p.cpf AS profCpf, p.senha AS profSenha,"
+                    + "d.id AS disciplinaId, d.nome AS disciplinaNome, d.requisito , d.ementa, d.carga_horaria,"
+                    + "t.id AS turmaId ,t.codigo_turma , t.nota FROM turmas t INNER JOIN alunos a on t.aluno_id = a.id "
+                    + "INNER JOIN professores p on t.professor_id = p.id INNER JOIN disciplina d on t.disciplina_id = d.id "
+                    + "WHERE t.id = ? "
+                    + "ORDER BY alunoNome, profNome, disciplinaNome";
+            PreparedStatement preparedStatement;
+            preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+            preparedStatement.setInt(1, id);
+            ResultSet resultado = preparedStatement.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    Aluno aluno = new Aluno(resultado.getInt("alunoId"), resultado.getString("alunoNome"),
+                            resultado.getString("alunoEmail"), resultado.getString("alunoCelular"),
+                            resultado.getString("alunoCpf"), resultado.getString("alunoSenha"),
+                            resultado.getString("alunoEnd"), resultado.getString("cidade"),
+                            resultado.getString("bairro"), resultado.getString("cep"));
+                    Professor professor = new Professor(resultado.getInt("profId"), resultado.getString("profNome"),
+                            resultado.getString("profEmail"), resultado.getString("profCpf"),
+                            resultado.getString("profSenha"));
+                    Disciplina disciplina = new Disciplina(resultado.getInt("disciplinaId"), resultado.getString("disciplinaNome"),
+                            resultado.getString("requisito"), resultado.getString("ementa"),
+                            Integer.parseInt(resultado.getString("carga_horaria")));
+                    Turma turma = new Turma(resultado.getInt("turmaId"), resultado.getInt("profId"),
+                            resultado.getInt("disciplinaId"), resultado.getInt("alunoId"),
+                            resultado.getString("codigo_turma"), Double.parseDouble(resultado.getString("nota")));
+                    AlunoProfessorDisciplina alunoProfessorDisciplina = new AlunoProfessorDisciplina(aluno, professor, disciplina, turma);
+                    turmaResponse = alunoProfessorDisciplina;
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Query de select (GetAll - turmas) incorreta");
+        } finally {
+            conexao.closeConexao();
+        }
+        return turmaResponse;
     }
 
     @Override

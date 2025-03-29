@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" import="entidade.Professor" %>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
     <div class="container-fluid">
         <a class="navbar-brand" href="/aplicacaoMVC/home">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,10 +14,9 @@
                         Professor ProfessorLogado = (Professor) session.getAttribute("professor");
                         if (ProfessorLogado != null) { %>
                             <a class="nav-link" href="/aplicacaoMVC/professor/dashboard">Dashboard</a>
-                            <!-- <a class="nav-link" href="/aplicacaoMVC/admin/CategoriaController?acao=Listar">Categorias</a>
-                            <a class="nav-link" href="/aplicacaoMVC/admin/logOut">Logout</a> -->
+                            <a class="nav-link" href="/aplicacaoMVC/professor/logOut">Logout</a>
                 <%  } else { %>
-                
+
                             <a class="nav-link" href="/aplicacaoMVC/MostrarComentarios">Coment&aacute;rios</a>
                             <a class="nav-link" href="/aplicacaoMVC/AutenticaController?acao=Login">Login</a>
                 <%    }

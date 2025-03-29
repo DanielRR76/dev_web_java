@@ -25,12 +25,12 @@ public class DashboardController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         RequestDispatcher rd;
 
-        ArrayList<AlunoProfessorDisciplina> turmas = new ArrayList<AlunoProfessorDisciplina>();
-        TurmaDAO turmaDAO = new TurmaDAO();
+        // ArrayList<AlunoProfessorDisciplina> turmas = new ArrayList<AlunoProfessorDisciplina>();
+        // TurmaDAO turmaDAO = new TurmaDAO();
 
-        turmas = turmaDAO.getAllUnit();
-        
-        request.setAttribute("turmas", turmas);
+        // turmas = turmaDAO.getAllUnit();
+
+        // request.setAttribute("turmas", turmas);
         rd = request.getRequestDispatcher("/views/admin/dashboard/areaRestrita.jsp");
         rd.forward(request, response);
     }
@@ -43,12 +43,12 @@ public class DashboardController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         RequestDispatcher rd;
 
-        ArrayList<AlunoProfessorDisciplina> turmas = new ArrayList<AlunoProfessorDisciplina>();
-        TurmaDAO turmaDAO = new TurmaDAO();
+        // ArrayList<AlunoProfessorDisciplina> turmas = new ArrayList<AlunoProfessorDisciplina>();
+        // TurmaDAO turmaDAO = new TurmaDAO();
 
-        turmas = turmaDAO.getAllUnit();
-        
-        request.setAttribute("turmas", turmas);
+        // turmas = turmaDAO.getAllUnit();
+
+        // request.setAttribute("turmas", turmas);
         rd = request.getRequestDispatcher("/views/admin/dashboard/areaRestrita.jsp");
         rd.forward(request, response);
     }

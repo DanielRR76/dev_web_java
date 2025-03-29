@@ -1,5 +1,3 @@
-<%@page import="entidade.Categoria"%>
-<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -13,7 +11,7 @@
         <link href="http://localhost:8080/aplicacaoMVC/views/bootstrap/bootstrap.min.css"  rel="stylesheet">
 
     </head>
-    <body>
+    <body class="d-flex justify-content-center align-items-center vh-100 text-center bg-dark text-light">
         <div class="container">
             <div class="mt-5">
 
@@ -22,9 +20,9 @@
                     if ((msgOperacaoRealizada != null) && (!msgOperacaoRealizada.isEmpty())) {%>
 
                     <h2><%= msgOperacaoRealizada%></h2>
-                    
+
                 <% }%>
-                
+
                 <a href="<%=link%>" class="btn btn-danger">Retornar</a>
             </div>
         </div>
