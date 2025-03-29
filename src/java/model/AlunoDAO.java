@@ -14,7 +14,7 @@ public class AlunoDAO implements Dao<Aluno> {
         Conexao conexao = new Conexao();
         Aluno aluno = new Aluno();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM alunos WHERE id = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Alunos WHERE id = ? ");
             sql.setInt(1, id);
             ResultSet resultado = sql.executeQuery();
 
@@ -40,12 +40,42 @@ public class AlunoDAO implements Dao<Aluno> {
         return aluno;
     }
 
+    public Aluno getByCPF(String cpf) throws Exception {
+        Conexao conexao = new Conexao();
+        try {
+            Aluno aluno = new Aluno();
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Alunos WHERE CPF = ? LIMIT 1 ");
+            sql.setString(1, cpf);
+            ResultSet resultado = sql.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    aluno.setId(Integer.parseInt(resultado.getString("ID")));
+                    aluno.setNome(resultado.getString("NOME"));
+                    aluno.setEmail(resultado.getString("EMAIL"));
+                    aluno.setCpf(resultado.getString("CPF"));
+                    aluno.setSenha(resultado.getString("SENHA"));
+                    aluno.setCelular(resultado.getString("CELULAR"));
+                    aluno.setEndereco(resultado.getString("ENDERECO"));
+                    aluno.setCidade(resultado.getString("CIDADE"));
+                    aluno.setBairro(resultado.getString("BAIRRO"));
+                    aluno.setCep(resultado.getString("CEP"));
+                }
+            }
+            return aluno;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Query de select (get) incorreta");
+        } finally {
+            conexao.closeConexao();
+        }
+    }
+
     @Override
     public ArrayList<Aluno> getAll() {
         ArrayList<Aluno> alunos = new ArrayList<Aluno>();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM alunos";
+            String selectSQL = "SELECT * FROM Alunos";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
@@ -76,8 +106,8 @@ public class AlunoDAO implements Dao<Aluno> {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement(
-                    "INSERT INTO alunos (nome, email, celular, cpf, senha, endereco, cidade, bairro, cep)"
-                            + " VALUES (?,?,?,?)");
+                    "INSERT INTO Alunos (nome, email, celular, cpf, senha, endereco, cidade, bairro, cep)"
+                            + " VALUES (?,?,?,?,?,?,?,?,?)");
             sql.setString(1, Aluno.getNome());
             sql.setString(2, Aluno.getEmail());
             sql.setString(3, Aluno.getCelular());
@@ -102,7 +132,7 @@ public class AlunoDAO implements Dao<Aluno> {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement(
-                    "UPDATE alunos SET nome = ?, email = ?, celular = ?, cpf = ?, senha = ?, endereco = ?, cidade = ?, bairro = ?, cep = ?  WHERE ID = ? ");
+                    "UPDATE Alunos SET nome = ?, email = ?, celular = ?, cpf = ?, senha = ?, endereco = ?, cidade = ?, bairro = ?, cep = ?  WHERE ID = ? ");
             sql.setString(1, Aluno.getNome());
             sql.setString(2, Aluno.getEmail());
             sql.setString(3, Aluno.getCelular());
@@ -127,7 +157,7 @@ public class AlunoDAO implements Dao<Aluno> {
     public void delete(int id) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM alunos WHERE id = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM Alunos WHERE id = ? ");
             sql.setInt(1, id);
             sql.executeUpdate();
 
@@ -142,7 +172,7 @@ public class AlunoDAO implements Dao<Aluno> {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao()
-                    .prepareStatement("SELECT * FROM alunos WHERE cpf=? and senha =? LIMIT 1");
+                    .prepareStatement("SELECT * FROM Alunos WHERE cpf=? and senha =? LIMIT 1");
             sql.setString(1, Aluno.getCpf());
             sql.setString(2, Aluno.getSenha());
             ResultSet resultado = sql.executeQuery();

@@ -15,6 +15,13 @@ public class Disciplina {
         this.cargaHoraria = cargaHoraria;
     }
 
+    public Disciplina(String nome, String requisito, String ementa, int cargaHoraria) {
+        this.nome = nome;
+        this.requisito = requisito;
+        this.ementa = ementa;
+        this.cargaHoraria = cargaHoraria;
+    }
+
     public Disciplina() {
         this.id = 0;
         this.nome = "";

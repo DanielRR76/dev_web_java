@@ -3,22 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/model/ComentarioDAO.java</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/web/views/registro/formRegistro.jsp</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/entidade/Categoria.java</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/entidade/Comentario.java</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/MostrarComentarios.java</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/web/views/public/comentarios.jsp</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/AutenticaController.java</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/web/index.jsp</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/model/Conexao.java</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/filtro/filtroRestrito.java</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/model/CategoriaDAO.java</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/CategoriaController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/model/TurmaDAO.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/web/views/comum/menu.jsp</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/filtro/filtroRestritoAdm.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/professor/RelatorioController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/DashboardController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/AdmController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/model/ProfessorDAO.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/AprovaAdmController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/DisciplinaController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/aluno/RelatorioController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/AutenticaAdmController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/ProfController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/professor/DashboardProfessorController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/professor/LancarNotaController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/professor/LogoutController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/web/views/admin/listar/listarAdm.jsp</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/entidade/Professor.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/AlunoController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/admin/TurmaController.java</file>
+            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/web/views/public/home.jsp</file>
             <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/model/AdministradorDAO.java</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/web/views/comum/showMessage.jsp</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/HomeController.java</file>
-            <file>file:/C:/Users/drribeir/MEUS_CODIGOS/OUTROS_PROJETOS/aplicacaoMVC/aplicacaoMVC/src/java/controller/RegistrarController.java</file>
         </group>
     </open-files>
 </project-private>

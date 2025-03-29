@@ -17,6 +17,13 @@ public class Turma {
         this.codigoTurma = codigoTurma;
         this.nota = nota;
     }
+    public Turma(int idProfessor, int idDisciplina, int idAluno, String codigoTurma, Double nota) {
+        this.idProfessor = idProfessor;
+        this.idDisciplina = idDisciplina;
+        this.idAluno = idAluno;
+        this.codigoTurma = codigoTurma;
+        this.nota = nota;
+    }
 
     public Turma() {
         this.id = 0;
